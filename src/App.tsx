@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Typography, Row, Col } from 'antd';
 
 import { ServisesForm } from './components/ServisesForm';
+import { SearchForm } from './components/SearchForm';
 import { ServisesList } from './components/ServisesList';
 
 import { DATA } from './data';
@@ -22,6 +23,11 @@ export const App = () => {
         <Row className='page-content'>
           <Col span={24}>
             <ServisesForm />
+          </Col>
+        </Row>
+        <Row className='page-content'>
+          <Col span={24}>
+            <SearchForm />
           </Col>
         </Row>
 

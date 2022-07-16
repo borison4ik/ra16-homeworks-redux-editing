@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { List, Typography, notification } from 'antd';
 
@@ -13,8 +13,11 @@ import './index.scss';
 const { Text } = Typography;
 
 export const ServisesList: React.FC = () => {
-  const { editing, servises } = useTypedSelector((state) => state.servises);
+  const { filter, editing, servises } = useTypedSelector(
+    (state) => state.servises,
+  );
   const dispatch = useDispatch();
+  const [filteredServises, setFilteredServises] = useState(servises);
 
   const editHandler = (id: string) => {
     dispatch(setEditingServiceAction({ status: true, id: id }));
@@ -30,11 +33,19 @@ export const ServisesList: React.FC = () => {
     dispatch(deleteServiceAction(id));
   };
 
+  useEffect(() => {
+    setFilteredServises(
+      servises.filter(
+        (s) => s.title.toLowerCase().indexOf(filter.toLowerCase().trim()) >= 0,
+      ),
+    );
+  }, [filter, servises]);
+
   return (
     <List
       className='servises-list'
       itemLayout='horizontal'
-      dataSource={servises}
+      dataSource={filteredServises}
       renderItem={(item) => (
         <List.Item
           className='servises-item'

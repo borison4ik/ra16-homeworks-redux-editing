@@ -3,6 +3,7 @@
 ## TASKS:
 
 - 3.1.1 (editing)
+- 3.1.2 (filter)
 
 ```
     "antd": "^4.21.6",

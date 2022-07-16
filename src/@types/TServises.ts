@@ -12,6 +12,7 @@ export type TEditingService = {
 export type IServisesState = {
   servises: TServiseItem[];
   editing: TEditingService;
+  filter: string;
 };
 
 export enum ServisesActionTypes {
@@ -19,6 +20,7 @@ export enum ServisesActionTypes {
   DELETE_SERVISE = 'DELETE_SERVISE',
   CHANGE_SERVISE = 'CHANGE_SERVISE',
   SET_EDITING = 'SET_EDITING',
+  SET_FILTER = 'SET_FILTER',
 }
 
 type IAddServisesAction = {
@@ -41,8 +43,14 @@ type IsetEditingServisesAction = {
   payload: TEditingService;
 };
 
+type IsetFilterServisesAction = {
+  type: ServisesActionTypes.SET_FILTER;
+  payload: string;
+};
+
 export type TServisesAction =
   | IAddServisesAction
   | IDeleteServisesAction
   | IsetEditingServisesAction
+  | IsetFilterServisesAction
   | IChangeServisesAction;

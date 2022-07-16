@@ -19,3 +19,7 @@ export const deleteServiceAction = (payload: string) => {
 export const setEditingServiceAction = (payload: TEditingService) => {
   return { type: ServisesActionTypes.SET_EDITING, payload };
 };
+
+export const setFilterServiceAction = (payload: string) => {
+  return { type: ServisesActionTypes.SET_FILTER, payload };
+};
