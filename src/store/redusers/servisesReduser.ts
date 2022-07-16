@@ -23,6 +23,7 @@ const initialState: IServisesState = {
     },
   ],
   editing: { status: false, id: '' },
+  filter: '',
 };
 
 export const servisesReduser = (
@@ -53,6 +54,11 @@ export const servisesReduser = (
       return {
         ...state,
         editing: action.payload,
+      };
+    case ServisesActionTypes.SET_FILTER:
+      return {
+        ...state,
+        filter: action.payload,
       };
 
     default:
